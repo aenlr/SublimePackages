@@ -17,7 +17,7 @@ def pretty_print(text: str) -> str:
     return pretty_dumps(v)
 
 
-def base64_decode_urlsafe(text: str) -> bytes:
+def base64_decode_urlsafe(text: str):
     try:
         b = text.encode("ascii")
     except:
