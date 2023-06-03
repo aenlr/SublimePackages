@@ -1,0 +1,6 @@
+**/*
+!/.gitattributes
+!/.gitignore
+!/Personal/*
+!/Preferences/*
+!/User/*
