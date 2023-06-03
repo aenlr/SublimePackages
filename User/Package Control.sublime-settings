@@ -5,10 +5,19 @@
 	],
 	"installed_packages":
 	[
+		"Dockerfile Syntax Highlighting",
 		"LSP",
+		"LSP-dockerfile",
+		"LSP-eslint",
+		"LSP-html",
 		"LSP-json",
+		"LSP-lemminx",
+		"LSP-PowerShellEditorServices",
+		"LSP-typescript",
+		"LSP-volar",
 		"Package Control",
 		"PowerShell",
 		"SideBarEnhancements",
+		"Vue Syntax Highlight",
 	],
 }
