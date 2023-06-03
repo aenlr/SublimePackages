@@ -1,0 +1,7 @@
+{
+	// The path to the Sublime Merge executable. This should only be set if
+	// Sublime Merge is not installed in a standard location, such as when
+	// using a portable install. Set to 'null' to hide Sublime Merge
+	// integrations.
+	"sublime_merge_path": "../sublime_merge/sublime_merge.exe",
+}

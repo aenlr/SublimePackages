@@ -1,0 +1,41 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	// Set to true to insert spaces when tab is pressed
+	"translate_tabs_to_spaces": true,
+
+	// Makes tabs with modified files more visible
+	"highlight_modified_tabs": true,
+
+	// Display line endings in the status bar
+	"show_line_endings": true,
+
+	// Determines what character(s) are used to terminate each line in new files.
+	// Valid values are 'system' (whatever the OS uses), 'windows' (CRLF) and
+	// 'unix' (LF only).
+	"default_line_ending": "unix",
+
+	// Display file encoding in the status bar
+	"show_encoding": true,
+
+	// Set to true to automatically save files when switching to a different file
+	// or application
+	"save_on_focus_lost": true,
+
+	// Hides the new tab button
+	"hide_new_tab_button": true,
+
+	// Hides the buttons for scrolling tabs left/right, requiring use of a
+	// trackpad or mouse scroll wheel
+	"hide_tab_scrolling_buttons": true,
+
+	// Determines whether Goto Anything should exclude files ignored by git.
+	"goto_anything_exclude_gitignore": true,
+
+	"folder_exclude_patterns": [".idea", ".git"],
+
+	// List any packages to ignore here. When removing entries from this list,
+	// a restart may be required if the package contains plugins.
+	"ignored_packages": ["Vintage",
+	],
+}
