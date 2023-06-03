@@ -32,6 +32,8 @@ def base64_encode_urlsafe(text: str, encoding="utf-8", padding=False) -> str:
 
 
 def base64_encode(text: str, encoding="utf-8", padding=False) -> str:
+    if padding is None:
+        padding = True
     b = text.encode(encoding)
     encoded = base64.b64encode(b)
     if not padding:
