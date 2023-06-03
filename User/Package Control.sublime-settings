@@ -5,6 +5,9 @@
 	],
 	"installed_packages":
 	[
+		"LSP",
+		"LSP-json",
+		"Package Control",
 		"PowerShell",
 		"SideBarEnhancements",
 	],

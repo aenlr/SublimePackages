@@ -2,7 +2,6 @@ import sublime
 import sublime_plugin
 
 import base64
-import json
 
 
 def base64_decode_urlsafe(text: str, encoding="utf-8") -> str:
