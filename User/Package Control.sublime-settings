@@ -8,6 +8,7 @@
 		"Dockerfile Syntax Highlighting",
 		"Git",
 		"LSP",
+		"LSP-bash",
 		"LSP-css",
 		"LSP-dockerfile",
 		"LSP-eslint",
