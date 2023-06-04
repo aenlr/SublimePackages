@@ -103,7 +103,12 @@ class Base64DecodeCommand(sublime_plugin.TextCommand):
             r = self.view.transform_region_from(r, change_id)
             text = self.view.substr(r).strip()
             if text:
-                text = base64_decode_urlsafe(text, encoding)
+                if text[0] in ('"', "'") and text[-1] == text[0]:
+                    quote = text[0]
+                    text = text[1:-1]
+                else:
+                    quote = ""
+                text = quote + base64_decode_urlsafe(text, encoding) + quote
                 indent = normed_indentation_pt(self.view, r, tab_size)
                 if indent:
                     if insert_spaces:
