@@ -15,5 +15,6 @@
     { "keys": ["super+'"], "command": "toggle_comment", "args": { "block": false } },
     { "keys": ["super+shift+'"], "command": "toggle_comment", "args": { "block": true } },
 
+    // Toggle console
     { "keys": ["ctrl+§"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
 ]

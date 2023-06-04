@@ -15,6 +15,7 @@
         "command": "lsp_format_document",
         "context": [{"key": "lsp.session_with_capability", "operand": "documentFormattingProvider | documentRangeFormattingProvider"}]
     },
+    // Toggle console
     { "keys": ["ctrl+§"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
     { "keys": ["ctrl+\\"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
 ]
