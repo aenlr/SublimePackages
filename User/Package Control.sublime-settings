@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Dockerfile Syntax Highlighting",
+		"Git",
 		"LSP",
 		"LSP-dockerfile",
 		"LSP-eslint",
