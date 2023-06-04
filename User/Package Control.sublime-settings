@@ -13,6 +13,7 @@
 		"LSP-html",
 		"LSP-json",
 		"LSP-lemminx",
+		"LSP-OmniSharp",
 		"LSP-PowerShellEditorServices",
 		"LSP-typescript",
 		"LSP-volar",
