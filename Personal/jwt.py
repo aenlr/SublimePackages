@@ -17,11 +17,8 @@ def pretty_print(text: str) -> str:
     return pretty_dumps(v)
 
 
-def base64_decode_urlsafe(text: str):
-    try:
-        b = text.encode("ascii")
-    except:
-        return text
+def base64_decode_urlsafe(text: str) -> bytes:
+    b = text.encode("ascii")
     missing_padding = len(b) % 4
     if missing_padding and not b.endswith(b"="):
         b += b"=" * (4 - missing_padding)
