@@ -1,0 +1,12 @@
+{
+    "file_patterns": [
+        "test_*.py",
+        "*_test.py"
+    ],
+    "working_dir": "$folder",
+    "cmd": ["venv/bin/pytest", "$file"],
+    "windows": {
+        "cmd": ["venv\\Scripts\\pytest.exe", "$file"],
+    },
+    "file_regex": "^([^:]+):(\\d+): ([^\\n]+)"
+}

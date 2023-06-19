@@ -1,0 +1,8 @@
+{
+    //"keyfiles": [ "pyproject.toml" ],
+    "working_dir": "$folder",
+    "cmd": ["venv/bin/pip", "install", "-e", "."],
+    "windows": {
+        "cmd": ["venv\\Scripts\\pip.exe", "install", "-e", "."],
+    },
+}
