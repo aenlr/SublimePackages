@@ -22,7 +22,7 @@
 
 	// Set to true to automatically save files when switching to a different file
 	// or application
-	"save_on_focus_lost": true,
+	"save_on_focus_lost": false,
 
 	// Hides the new tab button
 	"hide_new_tab_button": true,
@@ -40,4 +40,5 @@
 	// a restart may be required if the package contains plugins.
 	"ignored_packages": ["Vintage",
 	],
+	"font_size": 11,
 }

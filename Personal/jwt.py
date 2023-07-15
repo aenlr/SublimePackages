@@ -26,7 +26,7 @@ def base64_decode_urlsafe(text: str) -> bytes:
 
 
 def decode_jwt(text: str) -> tuple:
-    parts = text.split('.', 2)
+    parts = text.split(".", 2)
     header = json.loads(base64_decode_urlsafe(parts[0]))
     if len(parts) == 1:
         jws = header
@@ -63,7 +63,7 @@ def normed_indentation_pt(view, sel, tab_size):
     for pt in range(ln.begin(), sel.begin()):
         ch = view.substr(pt)
 
-        if ch == '\t':
+        if ch == "\t":
             pos += tab_size - (pos % tab_size)
 
         elif ch.isspace():
@@ -80,11 +80,15 @@ def normed_indentation_pt(view, sel, tab_size):
 class JwtDecodeCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         regions = [s for s in self.view.sel()]
-        tab_size = int(self.view.settings().get('tab_size', 8))
+        tab_size = int(self.view.settings().get("tab_size", 8))
         json_indent = tab_size
-        insert_spaces = self.view.settings().get('translate_tabs_to_spaces', False)
+        insert_spaces = self.view.settings().get(
+            "translate_tabs_to_spaces", False
+        )
         syntax = self.view.syntax()
-        convert_to_json = self.view.buffer().file_name() is None and (syntax is None or syntax.name == 'Plain Text')
+        convert_to_json = self.view.buffer().file_name() is None and (
+            syntax is None or syntax.name == "Plain Text"
+        )
         if convert_to_json:
             insert_spaces = True
             json_indent = 2
@@ -96,13 +100,22 @@ class JwtDecodeCommand(sublime_plugin.TextCommand):
             if text:
                 jws = decode_jwt(text)
                 indent = normed_indentation_pt(self.view, r, tab_size)
-                text = json.dumps(jws, indent=json_indent if insert_spaces else '\t', ensure_ascii=False)
+                text = json.dumps(
+                    jws,
+                    indent=json_indent if insert_spaces else "\t",
+                    ensure_ascii=False,
+                )
                 if indent:
                     if insert_spaces:
-                        text = text.replace("\n", "\n" + " " * (tab_size * int(indent / tab_size)))
+                        text = text.replace(
+                            "\n",
+                            "\n" + " " * (tab_size * int(indent / tab_size)),
+                        )
                     else:
-                        text = text.replace("\n", "\n" + "\t" * int(indent / tab_size))
+                        text = text.replace(
+                            "\n", "\n" + "\t" * int(indent / tab_size)
+                        )
                 self.view.replace(edit, r, text)
 
         if convert_to_json:
-            self.view.assign_syntax('Packages/JavaScript/JSON.sublime-syntax')
+            self.view.assign_syntax("Packages/JavaScript/JSON.sublime-syntax")

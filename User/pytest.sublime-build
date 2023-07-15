@@ -8,5 +8,5 @@
     "windows": {
         "cmd": ["venv\\Scripts\\pytest.exe", "$file"],
     },
-    "file_regex": "^([^:]+):(\\d+): ([^\\n]+)"
+    "file_regex": "^([^:]+):(\\d+): ([^\\n]*)"
 }
