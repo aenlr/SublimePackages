@@ -3,6 +3,8 @@ import sublime_plugin
 
 import base64
 
+from .common import EncodingInputHandler
+
 
 def base64_decode_urlsafe(text: str, encoding="utf-8") -> str:
     try:
@@ -10,14 +12,14 @@ def base64_decode_urlsafe(text: str, encoding="utf-8") -> str:
     except:
         return text
     missing_padding = len(b) % 4
-    if missing_padding: # and not b.endswith(b"="):
+    if missing_padding:  # and not b.endswith(b"="):
         b += b"=" * (4 - missing_padding)
     b = base64.urlsafe_b64decode(b)
     try:
         if encoding == "utf-8":
             return b.decode(encoding)
         else:
-            return b.decode(encoding, errors='replace')
+            return b.decode(encoding, errors="replace")
     except:
         print("Falling back to iso-8859-1")
         return b.decode("iso-8859-1")
@@ -58,7 +60,7 @@ def normed_indentation_pt(view, sel, tab_size):
     for pt in range(ln.begin(), sel.begin()):
         ch = view.substr(pt)
 
-        if ch == '\t':
+        if ch == "\t":
             pos += tab_size - (pos % tab_size)
 
         elif ch.isspace():
@@ -72,21 +74,6 @@ def normed_indentation_pt(view, sel, tab_size):
     return pos
 
 
-class EncodingInputHandler(sublime_plugin.ListInputHandler):
-    def name(self):
-        return "encoding"
-
-    def list_items(self):
-        return [
-            ("UTF-8", "utf-8"),
-            ("Latin 1", "iso-8859-1"),
-            ("Windows 1252", "cp1252"),
-            ("ISO 8859-15", "iso-8859-15"),
-            ("ASCII", "ascii"),
-        ]
-
-
-
 class Base64DecodeCommand(sublime_plugin.TextCommand):
     def input(self, args: dict):
         if "encoding" not in args:
@@ -95,8 +82,8 @@ class Base64DecodeCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, encoding):
         regions = [s for s in self.view.sel()]
-        tab_size = int(self.view.settings().get('tab_size', 8))
-        insert_spaces = self.view.settings().get('translate_tabs_to_spaces', False)
+        tab_size = int(self.view.settings().get("tab_size", 8))
+        insert_spaces = self.view.settings().get("translate_tabs_to_spaces", False)
 
         change_id = self.view.change_id()
         for r in regions:
@@ -112,7 +99,9 @@ class Base64DecodeCommand(sublime_plugin.TextCommand):
                 indent = normed_indentation_pt(self.view, r, tab_size)
                 if indent:
                     if insert_spaces:
-                        text = text.replace("\n", "\n" + " " * (tab_size * int(indent / tab_size)))
+                        text = text.replace(
+                            "\n", "\n" + " " * (tab_size * int(indent / tab_size))
+                        )
                     else:
                         text = text.replace("\n", "\n" + "\t" * int(indent / tab_size))
                 self.view.replace(edit, r, text)
@@ -136,4 +125,3 @@ class Base64EncodeCommand(sublime_plugin.TextCommand):
                 else:
                     text = base64_encode(text, encoding, padding)
                 self.view.replace(edit, r, text)
-

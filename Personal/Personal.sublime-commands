@@ -2,5 +2,6 @@
 	{ "caption": "JWT: Decode", "command": "jwt_decode" },
 	{ "caption": "Base64: Decode", "command": "base64_decode" },
 	{ "caption": "Base64: Encode", "command": "base64_encode", "args": { "url": false, "padding": true } },
-	{ "caption": "Base64: URL-encode", "command": "base64_encode", "args": { "url": true, "padding": false } }
+	{ "caption": "Base64: URL-encode", "command": "base64_encode", "args": { "url": true, "padding": false } },
+	{ "caption": "Hex: Decode", "command": "hex_decode" }
 ]
