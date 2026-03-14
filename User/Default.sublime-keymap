@@ -1,4 +1,12 @@
 [
+    // Add carets on lines above and below
+    { "keys": ["ctrl+alt+up"], "command": "select_lines", "args": {"forward": false} },
+    { "keys": ["ctrl+alt+down"], "command": "select_lines", "args": {"forward": true} },
+    // Line comment
+    { "keys": ["ctrl+'"], "command": "toggle_comment", "args": { "block": false } },
+    // Block comment
+    { "keys": ["ctrl+shift+'"], "command": "toggle_comment", "args": { "block": true } },
+
     // Jump back/forward
     { "keys": ["ctrl+alt+left"], "command": "jump_back" },
     { "keys": ["ctrl+alt+right"], "command": "jump_forward" },
@@ -32,7 +40,5 @@
         "keys": ["ctrl+alt+l"],
         "command": "lsp_format_document",
         "context": [{"key": "lsp.session_with_capability", "operand": "documentFormattingProvider | documentRangeFormattingProvider"}]
-    },
-    // Toggle shell panel
-    { "keys": ["alt+f12"], "command": "toggle_terminus_panel" },
+    }
 ]

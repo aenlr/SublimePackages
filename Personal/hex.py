@@ -2,7 +2,6 @@ import sublime
 import sublime_plugin
 
 import re
-
 from .common import EncodingInputHandler
 
 
@@ -15,6 +14,10 @@ def decode_hex_string(h: str) -> bytes:
     if len(h) % 2:
         h = "0" + h
     return bytes.fromhex(h)
+
+
+def encode_hex_string(txt: str, encoding: str) -> str:
+    return txt.encode(encoding).hex()
 
 
 def normed_indentation_pt(view, sel, tab_size):
@@ -82,4 +85,23 @@ class HexDecodeCommand(sublime_plugin.TextCommand):
                         )
                     else:
                         text = text.replace("\n", "\n" + "\t" * int(indent / tab_size))
+                self.view.replace(edit, r, text)
+
+
+class HexEncodeCommand(sublime_plugin.TextCommand):
+    def input(self, args: dict):
+        if "encoding" not in args:
+            return EncodingInputHandler()
+        return None
+
+    def run(self, edit, encoding, upper=False):
+        regions = [s for s in self.view.sel()]
+        change_id = self.view.change_id()
+        for r in regions:
+            r = self.view.transform_region_from(r, change_id)
+            text = self.view.substr(r)
+            if text:
+                text = encode_hex_string(text, encoding)
+                if upper:
+                    text = text.upper()
                 self.view.replace(edit, r, text)

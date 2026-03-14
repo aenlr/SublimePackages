@@ -3,5 +3,7 @@
 	{ "caption": "Base64: Decode", "command": "base64_decode" },
 	{ "caption": "Base64: Encode", "command": "base64_encode", "args": { "url": false, "padding": true } },
 	{ "caption": "Base64: URL-encode", "command": "base64_encode", "args": { "url": true, "padding": false } },
-	{ "caption": "Hex: Decode", "command": "hex_decode" }
+	{ "caption": "Hex: Decode", "command": "hex_decode" },
+	{ "caption": "Hex: Encode", "command": "hex_encode" },
+	{ "caption": "Hex: Encode Uppercase", "command": "hex_encode", "args": { "upper": true } }
 ]
